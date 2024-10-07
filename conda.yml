@@ -192,4 +192,3 @@ dependencies:
   - zipp=3.17.0=py310hca03da5_0
   - zlib=1.2.13=h18a0788_1
   - zstd=1.5.5=hd90d995_2
-prefix: /opt/homebrew/anaconda3/envs/mlflow-project
