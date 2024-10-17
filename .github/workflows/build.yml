@@ -35,8 +35,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ github.sha }}
+          tags: |
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:latest
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
-
-      - name: Image digest
-        run: echo docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ github.sha }}
