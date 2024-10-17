@@ -1,7 +1,7 @@
 name: docker-example
 
 docker_env:
-  image: 326takeda/mlflow-sample:latest
+  image: 326takeda/mlflow-project-sample:latest
   environment: [[KUBE_MLFLOW_TRACKING_URI]]
 
 entry_points:
