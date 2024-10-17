@@ -29,17 +29,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract tag name
-        id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-
       - name: Build and push
         uses: docker/build-push-action@master
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ steps.get_version.outputs.VERSION }}
+          tags: docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
 
       - name: Image digest
