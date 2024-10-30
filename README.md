@@ -50,18 +50,17 @@ $ kubectl create ns mlflow
 ```
 
 kubernetes クラスタ内に MLflow Tracking Server をデプロイする.<br/>
-MFflow サーバを public にホストしている場合は不要.
 
 ```bash
-$ helm repo add community-charts https://community-charts.github.io/helm-charts
-$ helm install my-mlflow community-charts/mlflow -n mlflow
+$ helm install my-mlflow oci://registry-1.docker.io/bitnamicharts/mlflow --version 2.0.2 -n mlflow
+$ kubectl port-forward -n mlflow svc/my-mlflow 5001:80
 ```
 
 プロジェクトを実行する.
 
 ```bash
 $ docker build -t mlflow-sample-project:latest .
-$ KUBE_MLFLOW_TRACKING_URI=http://my-mlflow:5000 MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality --backend kubernetes --backend-config .kube/kubernetes_config.json -P alpha=0.5
+$ KUBE_MLFLOW_TRACKING_URI=http://my-mlflow MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality --backend kubernetes --backend-config .kube/kubernetes_config.json -P alpha=0.5
 ```
 
 環境変数
