@@ -1,6 +1,6 @@
 # MLflow project sample
 
-MLflowのプロジェクトのサンプル.
+MLflow のプロジェクトのサンプル.
 
 ## プロジェクトの構成
 
@@ -14,32 +14,51 @@ MLflowのプロジェクトのサンプル.
     └── kubernetes_config.yaml
 ```
 
-- `MLproject`: MLflowプロジェクトの設定ファイル
+- `MLproject`: MLflow プロジェクトの設定ファイル
 - `main.py`: プロジェクトのエントリポイント
-- `Dockerfile`: プロジェクトのDockerfile
-- `.kube/job_template.yaml`: Kubernetesジョブのテンプレート
+- `Dockerfile`: プロジェクトの Dockerfile
+- `.kube/job_template.yaml`: Kubernetes ジョブのテンプレート
 - `.kube/kubernetes_config.yaml`: デプロイ対象のクラスタに関する設定ファイル
 
+## project の作成
+
+```bash
+$ python3.10 -m venv .venv
+$ source .venv/bin/activate
+$ pip install --upgrade pip
+# KServeのInferenceServiceが対応しているのは以下
+$ pip install mlflow==2.10.2
+$ pip install cloudpickle==3.0.0
+$ pip install tensorflow==2.14.1
+$ pip install hyperopt
+```
+
 ## プロジェクトの実行
+
 ### ローカルでの実行
+
 ```bash
 $ MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality -P alpha=0.5 --build-image
 ```
 
-### Kubernetesでの実行
-namespaceを作成する.
+### Kubernetes での実行
+
+namespace を作成する.
+
 ```bash
 $ kubectl create ns mlflow
 ```
 
-kubernetesクラスタ内にMLflow Tracking Serverをデプロイする.<br/>
-MFflowサーバをpublicにホストしている場合は不要.
+kubernetes クラスタ内に MLflow Tracking Server をデプロイする.<br/>
+MFflow サーバを public にホストしている場合は不要.
+
 ```bash
 $ helm repo add community-charts https://community-charts.github.io/helm-charts
 $ helm install my-mlflow community-charts/mlflow -n mlflow
 ```
 
 プロジェクトを実行する.
+
 ```bash
 $ docker build -t mlflow-sample-project:latest .
 $ KUBE_MLFLOW_TRACKING_URI=http://my-mlflow:5000 MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality --backend kubernetes --backend-config .kube/kubernetes_config.json -P alpha=0.5
@@ -48,5 +67,5 @@ $ KUBE_MLFLOW_TRACKING_URI=http://my-mlflow:5000 MLFLOW_TRACKING_URI=http://loca
 環境変数
 | 環境変数 | 説明 |
 | --- | --- |
-| KUBE_MLFLOW_TRACKING_URI | mlflow project インスタンスからアクセスできるMLflowサーバのURL |
-| MLFLOW_TRACKING_URI | mlflowクライアントからアクセスできるMLflowサーバのURL |
+| KUBE_MLFLOW_TRACKING_URI | mlflow project インスタンスからアクセスできる MLflow サーバの URL |
+| MLFLOW_TRACKING_URI | mlflow クライアントからアクセスできる MLflow サーバの URL |
