@@ -70,7 +70,6 @@ tensorboard-data-server==0.7.2
 tensorflow==2.14.1
 tensorflow-estimator==2.14.0
 tensorflow-io-gcs-filesystem==0.37.1
-tensorflow-macos==2.14.1
 termcolor==2.5.0
 threadpoolctl==3.5.0
 tqdm==4.66.6
