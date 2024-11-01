@@ -18,9 +18,6 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@master
 
-      - name:
-        run:
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@master
 
