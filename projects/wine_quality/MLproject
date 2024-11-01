@@ -1,8 +1,7 @@
-name: docker-example
+name: wine-quality
 
 docker_env:
-  image: 326takeda/mlflow-sample-project:latest
-  environment: [[KUBE_MLFLOW_TRACKING_URI]]
+  image: 326takeda/mlflow_project-wine_quality:latest
 
 entry_points:
   main:
