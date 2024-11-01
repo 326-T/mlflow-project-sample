@@ -43,11 +43,15 @@ $ pip freeze > requirements.txt
 ```
 
 KServe:v0.1.4 では以下のライブラリ依存が存在する
-| ライブラリ | バージョン |
-| --- | --- |
-| mlflow | 2.10.2 |
-| cloudpickle | 3.0.0 |
-| tensorflow | 2.14.1 |
+
+| ライブラリ  | バージョン |
+| ----------- | ---------- |
+| mlflow      | 2.10.2     |
+| cloudpickle | 3.0.0      |
+| tensorflow  | 2.14.1     |
+| torch       | 2.2.1      |
+
+一覧は[./kserve_requirements.txt](./kserve_requirements.txt)で確認できる.
 
 ## プロジェクトの実行
 
