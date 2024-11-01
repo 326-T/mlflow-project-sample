@@ -8,9 +8,9 @@ MLflow のプロジェクトのサンプル.
 .
 ├── .github
 │   └── workflows
-│       └── wine_quality.yml
+│       └── wine-quality.yml
 └── projects
-    ├── wine_quality
+    ├── wine-quality
     |   ├── .venv
     |   ├── Dockerfile
     |   ├── MLproject
@@ -33,8 +33,8 @@ MLflow のプロジェクトのサンプル.
 ## project の作成
 
 ```bash
-$ mkdir -p projects/wine_quality
-$ cd projects/wine_quality
+$ mkdir -p projects/wine-quality
+$ cd projects/wine-quality
 $ python3.10 -m venv .venv
 $ source .venv/bin/activate
 $ pip install --upgrade pip
@@ -54,9 +54,9 @@ KServe:v0.1.4 では以下のライブラリ依存が存在する
 ### プロジェクトのビルド
 
 ```bash
-$ cd projects/wine_quality
-$ docker build -t 326takeda/mlflow_project-wine_quality:latest .
-$ docker push 326takeda/mlflow_project-wine_quality:latest
+$ cd projects/wine-quality
+$ docker build -t 326takeda/mlflow-project_wine-quality:latest .
+$ docker push 326takeda/mlflow-project_wine-quality:latest
 ```
 
 ### ローカルでの実行
@@ -68,11 +68,11 @@ $ mlflow server --host localhost --port 8080
 ```
 
 ```bash
-$ cd projects/wine_quality
+$ cd projects/wine-quality
 $ MLFLOW_TRACKING_URI=http://localhost:8080 \
   mlflow run . \
   --docker-args add-host="localhost:host-gateway" \
-  --experiment-name wine_quality \
+  --experiment-name wine-quality \
   -P alpha=0.5
 ```
 
@@ -105,7 +105,7 @@ $ kubectl port-forward -n mlflow svc/mlflow-tracking 8081:80
 $ KUBE_MLFLOW_TRACKING_URI=http://mlflow-tracking \
   MLFLOW_TRACKING_URI=http://localhost:8081 \
   mlflow run . \
-  --experiment-name wine_quality \
+  --experiment-name wine-quality \
   --backend kubernetes \
   --backend-config .kube/kubernetes_config.json \
   -P alpha=0.5

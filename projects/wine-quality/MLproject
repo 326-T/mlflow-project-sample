@@ -1,7 +1,7 @@
 name: wine-quality
 
 docker_env:
-  image: 326takeda/mlflow_project-wine_quality:latest
+  image: 326takeda/mlflow-project_wine-quality:latest
 
 entry_points:
   main:

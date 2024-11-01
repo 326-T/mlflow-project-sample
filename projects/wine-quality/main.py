@@ -91,7 +91,7 @@ space = {
     "momentum": hp.uniform("momentum", 0.0, 1.0),
 }
 
-mlflow.set_experiment("wine_quality")
+mlflow.set_experiment("wine-quality")
 with mlflow.start_run():
     # Conduct the hyperparameter search using Hyperopt
     trials = Trials()
