@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "projects/wine_quality/**"
 
 jobs:
   build-and-push:
@@ -15,6 +17,9 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@master
+
+      - name:
+        run:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@master
@@ -32,8 +37,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@master
         with:
-          context: .
-          file: Dockerfile
+          context: ./projects/wine_quality
+          file: ./projects/wine_quality/Dockerfile
           push: true
           tags: |
             docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:latest
