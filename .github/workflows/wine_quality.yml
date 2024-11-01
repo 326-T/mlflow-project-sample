@@ -41,6 +41,6 @@ jobs:
           file: ./projects/wine_quality/Dockerfile
           push: true
           tags: |
-            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:latest
-            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-sample-project:${{ github.sha }}
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow_project-wine_quality:latest
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow_project-wine_quality:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
