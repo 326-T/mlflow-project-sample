@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "projects/wine_quality/**"
+      - "projects/wine-quality/**"
 
 jobs:
   build-and-push:
@@ -34,10 +34,10 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@master
         with:
-          context: ./projects/wine_quality
-          file: ./projects/wine_quality/Dockerfile
+          context: ./projects/wine-quality
+          file: ./projects/wine-quality/Dockerfile
           push: true
           tags: |
-            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow_project-wine_quality:latest
-            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow_project-wine_quality:${{ github.sha }}
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-project_wine-quality:latest
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-project_wine-quality:${{ github.sha }}
           platforms: linux/amd64,linux/arm64
