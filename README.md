@@ -6,12 +6,22 @@ MLflow のプロジェクトのサンプル.
 
 ```
 .
-├── MLproject
-├── main.py
-├── Dockerfile
-└── .kube
-    ├── job_template.yaml
-    └── kubernetes_config.yaml
+├── .github
+│   └── workflows
+│       └── wine_quality.yml
+└── projects
+    ├── wine_quality
+    |   ├── .venv
+    |   ├── Dockerfile
+    |   ├── MLproject
+    |   ├── main.py
+    |   └── requirements.txt
+    └── another_project
+        ├── .venv
+        ├── Dockerfile
+        ├── MLproject
+        ├── main.py
+        └── requirements.txt
 ```
 
 - `MLproject`: MLflow プロジェクトの設定ファイル
@@ -23,22 +33,47 @@ MLflow のプロジェクトのサンプル.
 ## project の作成
 
 ```bash
+$ mkdir -p projects/wine_quality
+$ cd projects/wine_quality
 $ python3.10 -m venv .venv
 $ source .venv/bin/activate
 $ pip install --upgrade pip
-# KServeのInferenceServiceが対応しているのは以下
-$ pip install mlflow==2.10.2
-$ pip install cloudpickle==3.0.0
-$ pip install tensorflow==2.14.1
-$ pip install hyperopt
+$ pip install ...
+$ pip freeze > requirements.txt
 ```
+
+KServe:v0.1.4 では以下のライブラリ依存が存在する
+| ライブラリ | バージョン |
+| --- | --- |
+| mlflow | 2.10.2 |
+| cloudpickle | 3.0.0 |
+| tensorflow | 2.14.1 |
 
 ## プロジェクトの実行
 
-### ローカルでの実行
+### プロジェクトのビルド
 
 ```bash
-$ MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality -P alpha=0.5 --build-image
+$ cd projects/wine_quality
+$ docker build -t 326takeda/mlflow_project-wine_quality:latest .
+$ docker push 326takeda/mlflow_project-wine_quality:latest
+```
+
+### ローカルでの実行
+
+MLflow Tracking Server を起動する.
+
+```bash
+$ mlflow server --host localhost --port 8080
+```
+
+```bash
+$ cd projects/wine_quality
+$ MLFLOW_TRACKING_URI=http://localhost:8080 \
+  mlflow run . \
+  --docker-args add-host="localhost:host-gateway" \
+  --experiment-name wine_quality \
+  -P alpha=0.5
 ```
 
 ### Kubernetes での実行
@@ -52,15 +87,28 @@ $ kubectl create ns mlflow
 kubernetes クラスタ内に MLflow Tracking Server をデプロイする.<br/>
 
 ```bash
-$ helm install my-mlflow oci://registry-1.docker.io/bitnamicharts/mlflow --version 2.0.2 -n mlflow
-$ kubectl port-forward -n mlflow svc/my-mlflow 5001:80
+$ helm install mlflow oci://registry-1.docker.io/bitnamicharts/mlflow --version 2.0.2 -n mlflow \
+--set minio.enabled=false \
+--set postgresql.enabled=false \
+--set tracking.auth.enabled=false \
+--set tracking.persistence.enabled=false \
+--set tracking.service.type=ClusterIP
+```
+
+```bash
+$ kubectl port-forward -n mlflow svc/mlflow-tracking 8081:80
 ```
 
 プロジェクトを実行する.
 
 ```bash
-$ docker build -t mlflow-sample-project:latest .
-$ KUBE_MLFLOW_TRACKING_URI=http://my-mlflow MLFLOW_TRACKING_URI=http://localhost:5001 mlflow run . --experiment-name wine_quality --backend kubernetes --backend-config .kube/kubernetes_config.json -P alpha=0.5
+$ KUBE_MLFLOW_TRACKING_URI=http://mlflow-tracking \
+  MLFLOW_TRACKING_URI=http://localhost:8081 \
+  mlflow run . \
+  --experiment-name wine_quality \
+  --backend kubernetes \
+  --backend-config .kube/kubernetes_config.json \
+  -P alpha=0.5
 ```
 
 環境変数
