@@ -7,30 +7,30 @@ alembic==1.13.1
 alibi==0.9.5
 alibi-detect==0.11.5
 anyio==4.3.0
-archspec @ file:///home/conda/feedstock_root/build_artifacts/archspec_1699370045702/work
+archspec==0.2.2
 asgiref==3.7.2
 astunparse==1.6.3
 async-timeout==4.0.3
 attrs==23.2.0
 blinker==1.7.0
 blis==0.7.11
-boltons @ file:///home/conda/feedstock_root/build_artifacts/boltons_1703154663129/work
-Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1695989787169/work
+boltons==23.1.1
+Brotli==1.1.0
 cachetools==5.3.3
 catalogue==2.0.10
 catboost==1.2.3
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1707022139797/work/certifi
-cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1696001684923/work
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1698833585322/work
+certifi==2024.2.2
+cffi==1.16.0
+charset-normalizer==3.3.2
 click==8.1.7
 cloudpathlib==0.16.0
 cloudpickle==3.0.0
-colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
+colorama==0.4.6
 coloredlogs==15.0.1
-conda @ file:///home/conda/feedstock_root/build_artifacts/conda_1701731572133/work
-conda-libmamba-solver @ file:///home/conda/feedstock_root/build_artifacts/conda-libmamba-solver_1702406360642/work/src
-conda-package-handling @ file:///home/conda/feedstock_root/build_artifacts/conda-package-handling_1691048088238/work
-conda_package_streaming @ file:///home/conda/feedstock_root/build_artifacts/conda-package-streaming_1691009212940/work
+conda==23.11.0
+conda-libmamba-solver==23.12.0
+conda-package-handling==2.2.0
+conda_package_streaming==0.9.0
 confection==0.1.4
 contourpy==1.2.0
 cycler==0.12.1
@@ -39,7 +39,7 @@ datasets==2.2.1
 decorator==5.1.1
 Deprecated==1.2.14
 dill==0.3.8
-distro @ file:///home/conda/feedstock_root/build_artifacts/distro_1675116244235/work
+distro==1.8.0
 dm-tree==0.1.8
 docker==7.0.0
 entrypoints==0.4
@@ -69,40 +69,40 @@ h11==0.14.0
 h5py==3.10.0
 huggingface-hub==0.21.3
 humanfriendly==10.0
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1701026962277/work
+idna==3.6
 imageio==2.34.0
 importlib-metadata==6.11.0
 importlib-resources==5.13.0
 itsdangerous==2.1.2
 Jinja2==3.1.3
 joblib==1.3.2
-jsonpatch @ file:///home/conda/feedstock_root/build_artifacts/jsonpatch_1695536281965/work
-jsonpointer @ file:///home/conda/feedstock_root/build_artifacts/jsonpointer_1695397238043/work
+jsonpatch==1.33
+jsonpointer==2.4
 keras==2.14.0
 kiwisolver==1.4.5
 langcodes==3.3.0
 lazy_loader==0.3
 libclang==16.0.6
-libmambapy @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1702310393080/work/libmambapy
+libmambapy==1.5.5
 lightgbm==4.3.0
 llvmlite==0.41.1
 Mako==1.3.2
-mamba @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1702310393080/work/mamba
+mamba==1.5.5
 Markdown==3.5.2
 MarkupSafe==2.1.5
 matplotlib==3.8.3
-menuinst @ file:///home/conda/feedstock_root/build_artifacts/menuinst_1702317041727/work
+menuinst==2.0.1
 ml-dtypes==0.2.0
 mlflow==2.10.2
 mlserver==1.5.0
-mlserver-alibi-detect @ file:///opt/mlserver/dist/mlserver_alibi_detect-1.5.0-py3-none-any.whl#sha256=3a14fac650e2e8e5d89667ad494073af396627fb1b2e0fb4408843fd5ba51cac
-mlserver-alibi-explain @ file:///opt/mlserver/dist/mlserver_alibi_explain-1.5.0-py3-none-any.whl#sha256=0b5891256b35be6e2180ccbe7dc6bd2c9082622df13332553192e4e49aa7a699
-mlserver-catboost @ file:///opt/mlserver/dist/mlserver_catboost-1.5.0-py3-none-any.whl#sha256=4fda8d0f9bd693a08e58b8d4fa1d50d79a0c8b559ece76902019a8ae0fcf6049
-mlserver-huggingface @ file:///opt/mlserver/dist/mlserver_huggingface-1.5.0-py3-none-any.whl#sha256=88eb10def44cb74969ca0d81e552b0b2f609cacffd0428c518f94a76d4f77f14
+mlserver-alibi-detect==1.5.0
+mlserver-alibi-explain==1.5.0
+mlserver-catboost==1.5.0
+mlserver-huggingface==1.5.0
 mlserver-lightgbm==1.5.0
-mlserver-mlflow @ file:///opt/mlserver/dist/mlserver_mlflow-1.5.0-py3-none-any.whl#sha256=a6d9c56647f0e40db5ff1c245ca2e0d47e727d797a55d1d792529b037501ba3f
-mlserver-sklearn @ file:///opt/mlserver/dist/mlserver_sklearn-1.5.0-py3-none-any.whl#sha256=46557872e1f9e6ad426762dabd01d6a2592e9393b48824512e20d09067ea1451
-mlserver-xgboost @ file:///opt/mlserver/dist/mlserver_xgboost-1.5.0-py3-none-any.whl#sha256=5994c750d25a933927b0e2ee27094747dd215c42617c4bc899ff59eca92eacd8
+mlserver-mlflow==1.5.0
+mlserver-sklearn==1.5.0
+mlserver-xgboost==1.5.0
 mpmath==1.3.0
 multidict==6.0.5
 multiprocess==0.70.16
@@ -140,12 +140,13 @@ opentelemetry-util-http==0.44b0
 opt-einsum==3.3.0
 optimum==1.17.1
 orjson==3.9.15
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1696202382185/work
+packaging==23.2
 pandas==2.2.1
 pillow==10.2.0
-platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1701708255999/work
+pip==24.0
+platformdirs==4.1.0
 plotly==5.19.0
-pluggy @ file:///home/conda/feedstock_root/build_artifacts/pluggy_1693086607691/work
+pluggy==1.3.0
 preshed==3.0.9
 prometheus_client==0.20.0
 protobuf==3.20.3
@@ -153,11 +154,11 @@ py-grpc-prometheus==0.8.0
 pyarrow==15.0.0
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
-pycosat @ file:///home/conda/feedstock_root/build_artifacts/pycosat_1696355758174/work
-pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
+pycosat==0.6.6
+pycparser==2.21
 pydantic==1.10.14
 pyparsing==3.1.1
-PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
+PySocks==1.7.1
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 python-multipart==0.0.9
@@ -166,17 +167,18 @@ pytz==2023.4
 PyYAML==6.0.1
 querystring-parser==1.2.4
 regex==2023.12.25
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1684774241324/work
+requests==2.31.0
 requests-oauthlib==1.3.1
 responses==0.18.0
 rsa==4.9
-ruamel.yaml @ file:///home/conda/feedstock_root/build_artifacts/ruamel.yaml_1699007337104/work
-ruamel.yaml.clib @ file:///home/conda/feedstock_root/build_artifacts/ruamel.yaml.clib_1695996839082/work
+ruamel.yaml==0.18.5
+ruamel.yaml.clib==0.2.7
 safetensors==0.4.2
 scikit-image==0.22.0
 scikit-learn==1.4.1.post1
 scipy==1.12.0
 sentencepiece==0.2.0
+setuptools==69.1.1
 shap==0.43.0
 six==1.16.0
 slicer==0.0.7
@@ -211,7 +213,7 @@ tqdm==4.66.2
 transformers==4.38.2
 triton==2.2.0
 tritonclient==2.42.0
-truststore @ file:///home/conda/feedstock_root/build_artifacts/truststore_1694154605758/work
+truststore==0.8.0
 typer==0.9.0
 typing_extensions==4.10.0
 tzdata==2024.1
@@ -221,6 +223,7 @@ uvloop==0.19.0
 wasabi==1.1.2
 weasel==0.3.4
 Werkzeug==3.0.1
+wheel==0.42.0
 wrapt==1.14.1
 xgboost==2.0.3
 xxhash==3.4.1
