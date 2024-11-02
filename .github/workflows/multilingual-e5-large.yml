@@ -1,0 +1,43 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "projects/multilingual-e5-large/**"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@master
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@master
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@master
+
+      - name: Log in to Dockerhub Container Registry
+        uses: docker/login-action@master
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@master
+        with:
+          context: ./projects/multilingual-e5-large
+          file: ./projects/multilingual-e5-large/Dockerfile
+          push: true
+          tags: |
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-project_multilingual-e5-large:latest
+            docker.io/${{ secrets.DOCKERHUB_USER }}/mlflow-project_multilingual-e5-large:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64

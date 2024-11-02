@@ -1,0 +1,8 @@
+name: multilingual-e5-large
+
+docker_env:
+  image: 326takeda/mlflow-project_multilingual-e5-large:latest
+
+entry_points:
+  main:
+    command: "python main.py"
