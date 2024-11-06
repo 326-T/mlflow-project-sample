@@ -1,0 +1,7 @@
+{
+  "folders": [
+    { "path": "projects/wine-quality" },
+    { "path": "projects/multilingual-e5-large" },
+    { "path": "predictors/sentence-transformer" }
+  ]
+}
