@@ -31,7 +31,7 @@ jobs:
 
       - name: Build and push Docker image using Buildpacks
         run: |
-          pack build --builder=heroku/buildpacks:20 docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
+          pack build --builder=heroku/builder:24 docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
           docker tag docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
           docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
           docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
