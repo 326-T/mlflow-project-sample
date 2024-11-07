@@ -19,15 +19,15 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@master
 
-      - name: Install Pack CLI
-        uses: buildpacks/github-actions/setup-pack@master
-
       - name: Log in to Dockerhub Container Registry
         uses: docker/login-action@master
         with:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - id: setup-pack
+        uses: buildpacks/github-actions/setup-pack@v5.1.0
 
       - name: Build and push Docker image using Buildpacks
         run: |
