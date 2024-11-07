@@ -1,0 +1,14 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "projects/wine-quality" },
+    { "path": "projects/multilingual-e5-large" },
+    { "path": "predictors/sentence-transformer" }
+  ],
+  "settings": {
+    "files.exclude": {
+      "projects": true,
+      "predictors": true
+    }
+  }
+}
