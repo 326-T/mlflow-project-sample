@@ -6,6 +6,7 @@
   },
   "editor.rulers": [120],
   "editor.tabSize": 2,
+  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -14,7 +15,7 @@
       "source.organizeImports": "explicit"
     }
   },
-  "editor.formatOnSave": true,
+  "isort.args": ["--profile", "black"],
   "git.confirmSync": false,
   "github.copilot.editor.enableAutoCompletions": true,
   "python.languageServer": "Pylance",

@@ -1,9 +1,10 @@
 from typing import List
-from sentence_transformers import SentenceTransformer
+
 from mlflow import start_run
 from mlflow.models import infer_signature
 from mlflow.models.signature import ModelSignature
 from mlflow.sentence_transformers import log_model
+from sentence_transformers import SentenceTransformer
 
 sample_input: List[str] = ["日本語の文章をembeddingします。"]
 

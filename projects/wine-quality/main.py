@@ -1,12 +1,11 @@
 import keras
+import mlflow
 import numpy as np
 import pandas as pd
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe
+from mlflow.models import infer_signature
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-
-import mlflow
-from mlflow.models import infer_signature
 
 # Load dataset
 data = pd.read_csv(
