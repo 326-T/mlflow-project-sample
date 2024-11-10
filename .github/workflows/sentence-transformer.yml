@@ -1,0 +1,38 @@
+name: Build and Push Docker Image
+
+on:
+  # push:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "predictors/sentence-transformer/**"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@master
+
+      - name: Log in to Dockerhub Container Registry
+        uses: docker/login-action@master
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - id: setup-pack
+        uses: buildpacks/github-actions/setup-pack@v5.1.0
+
+      - name: Build and push Docker image using Buildpacks
+        run: |
+          cd predictors/sentence-transformer
+          pack build --builder=heroku/builder:24 docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
+          docker tag docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
+          docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
+          docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
