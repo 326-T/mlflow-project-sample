@@ -1,5 +1,5 @@
 ### REST v2
-POST http://localhost:8085/v2/models/e5-large/infer
+POST http://localhost:8081/v2/models/model/infer
 
 {
   "inputs": [
@@ -20,7 +20,7 @@ POST http://localhost:8085/v2/models/e5-large/infer
 
 ### REST v1
 
-POST http://localhost:8085/v1/models/e5-large:predict
+POST http://localhost:8081/v1/models/model:predict
 
 {
   "instances": [

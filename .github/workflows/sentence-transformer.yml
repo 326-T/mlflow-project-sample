@@ -1,12 +1,12 @@
 name: Build and Push Docker Image
 
 on:
-  # push:
-  pull_request:
+  push:
     branches:
       - main
     paths:
-      - "predictors/sentence-transformer/**"
+      - .github/workflows/sentence-transformer.yml
+      - predictors/sentence-transformer/**
 
 jobs:
   build-and-push:
@@ -19,6 +19,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@master
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@master
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@master
+
       - name: Log in to Dockerhub Container Registry
         uses: docker/login-action@master
         with:
@@ -26,13 +32,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - id: setup-pack
-        uses: buildpacks/github-actions/setup-pack@v5.1.0
-
-      - name: Build and push Docker image using Buildpacks
-        run: |
-          cd predictors/sentence-transformer
-          pack build --builder=heroku/builder:24 docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
-          docker tag docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
-          docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
-          docker push docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
+      - name: Build and push
+        uses: docker/build-push-action@master
+        with:
+          context: ./predictors/sentence-transformer
+          file: ./predictors/sentence-transformer/Dockerfile
+          push: true
+          tags: |
+            docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:latest
+            docker.io/${{ secrets.DOCKERHUB_USER }}/kserve-sentence-transformer:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64

@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "projects/multilingual-e5-large/**"
+      - .github/workflows/multilingual-e5-large.yml
+      - projects/multilingual-e5-large/**
 
 jobs:
   build-and-push:

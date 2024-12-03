@@ -51,7 +51,7 @@ $ docker build -t another-predictor:latest .
 ```bash
 $ docker run \
   -e PORT=8080 \
-  -v mlflow-models:/mnt/models \
-  -p 8080:8080 \
+  -v mlartifacts/430758536676277373/c9e86daac0744ad0a9f3f4480f3455b7/artifacts/another-predictor:/mnt/models \
+  -p 8081:8080 \
   another-predictor:latest
 ```

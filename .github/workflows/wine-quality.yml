@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "projects/wine-quality/**"
+      - .github/workflows/wine-quality.yml
+      - projects/wine-quality/**
 
 jobs:
   build-and-push:
