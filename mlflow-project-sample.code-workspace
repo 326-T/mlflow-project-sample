@@ -7,8 +7,9 @@
   ],
   "settings": {
     "files.exclude": {
-      "projects": true,
-      "predictors": true
+      "projects/wine-quality": true,
+      "projects/multilingual-e5-large": true,
+      "predictors/sentence-transformer": true
     }
   }
 }
