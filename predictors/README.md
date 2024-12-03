@@ -1,6 +1,6 @@
 # KServe Predictors
 
-MLflow のプロジェクトのサンプル.
+KServe InfereneceServiceのベースイメージ.
 
 ## Predictors の構成
 
@@ -22,8 +22,8 @@ MLflow のプロジェクトのサンプル.
         └── requirements.txt
 ```
 
-- `Procfile`: プロジェクトの Dockerfile
-- `model.py`: Predictor のエントリポイント
+- `Dockerfile`: Predictor の Dockerfile
+- `main.py`: Predictor のエントリポイント
 
 ## Predictors の作成
 
